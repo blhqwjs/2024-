@@ -24,9 +24,16 @@
 </template>
 
 <script>
+	import {listGroup } from '@/api/summer/group'
 	export default {
 		created() {
 			this.userId = getApp().globalData.userId;
+			
+			listGroup().then(res=>{
+				console.log(res);
+			}).catch(error=>{
+				console.log(error);
+			})
 		},
 		data() {
 			return {

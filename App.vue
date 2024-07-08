@@ -4,6 +4,10 @@
   import { getToken } from '@/utils/auth'
 
   export default {
+	  globalData: {
+	  	Authorization:"Bearer eyJhbGciOiJIUzUxMiJ9.eyJsb2dpbl91c2VyX2tleSI6ImI2MGE5YmIxLTFjODEtNDYwYy05NDU3LWU2MDViM2U5OTcyOSJ9.Zun_3SfIfTwoicjPLlzSYbuAMY1pTgBmUOXZigP_ZHWLPLeeBfFegQPR_VqklqsiACXV_i-RGYnINjnnybmcQA"
+	  },
+	  
     onLaunch: function() {
       this.initApp()
     },
