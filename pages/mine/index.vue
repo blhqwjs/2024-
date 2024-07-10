@@ -124,7 +124,7 @@
         this.$tab.navigateTo('/pages/mine/about/index')
       },
       handleJiaoLiuQun() {
-        this.$modal.showToast('QQ群：①133713780、②146013835')
+        this.$modal.showToast('QQ群：①975464490、②975464490')
       },
       handleBuilding() {
         this.$modal.showToast('模块建设中~')
@@ -142,11 +142,11 @@
     width: 100%;
     height: 100%;
 
-
     .header-section {
-      padding: 15px 15px 45px 15px;
-      background-color: #3c96f3;
+      padding: 20px 15px 55px 15px;
+      background: linear-gradient(45deg, #4facfe 0%, #00f2fe 100%);
       color: white;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 
       .login-tip {
         font-size: 18px;
@@ -154,7 +154,8 @@
       }
 
       .cu-avatar {
-        border: 2px solid #eaeaea;
+        border: 3px solid #eaeaea;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 
         .icon {
           font-size: 40px;
@@ -176,20 +177,53 @@
       top: -50px;
 
       .mine-actions {
-        margin: 15px 15px;
+        margin: 15px;
         padding: 20px 0px;
-        border-radius: 8px;
+        border-radius: 10px;
         background-color: white;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 
         .action-item {
           .icon {
-            font-size: 28px;
+            font-size: 30px;
+            transition: transform 0.3s;
           }
 
           .text {
             display: block;
-            font-size: 13px;
+            font-size: 14px;
             margin: 8px 0px;
+          }
+
+          &:hover .icon {
+            transform: scale(1.2);
+          }
+        }
+      }
+
+      .menu-list {
+        .list-cell {
+          background-color: white;
+          padding: 15px;
+          border-bottom: 1px solid #f0f0f0;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          cursor: pointer;
+          transition: background-color 0.3s;
+
+          &:hover {
+            background-color: #f9f9f9;
+          }
+
+          .menu-item-box {
+            display: flex;
+            align-items: center;
+
+            .menu-icon {
+              font-size: 24px;
+              margin-right: 10px;
+            }
           }
         }
       }

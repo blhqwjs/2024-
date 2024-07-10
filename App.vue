@@ -5,7 +5,6 @@
 
   export default {
 	  globalData: {
-	  	Authorization:"Bearer eyJhbGciOiJIUzUxMiJ9.eyJsb2dpbl91c2VyX2tleSI6IjczZDQwMzUwLTRhZjgtNGI1Yi05YzBjLTBiZjBhZGVmNmU2MSJ9.Zz5ohvbqxyihiUsik-ehB72F3eubJ7lK18H8JUFF6MZUk0ppfStWuJ9HjN_XneKfX-R-_XzTzVtNMUhy6l8KdQ"
 	  },
 	  
     onLaunch: function() {
