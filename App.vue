@@ -4,6 +4,11 @@
   import { getToken } from '@/utils/auth'
 
   export default {
+	  globalData: {
+	  	Authorization:
+		""
+	  },
+	  
     onLaunch: function() {
       this.initApp()
     },
