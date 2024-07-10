@@ -16,70 +16,79 @@
 </template>
 
 <script>
-  import { updateUserPwd } from "@/api/system/user"
+import { updateUserPwd } from "@/api/system/user";
 
-  export default {
-    data() {
-      return {
-        user: {
-          oldPassword: undefined,
-          newPassword: undefined,
-          confirmPassword: undefined
-        },
-        rules: {
-          oldPassword: {
-            rules: [{
+export default {
+  data() {
+    return {
+      user: {
+        oldPassword: undefined,
+        newPassword: undefined,
+        confirmPassword: undefined
+      },
+      rules: {
+        oldPassword: {
+          rules: [
+            {
               required: true,
               errorMessage: '旧密码不能为空'
-            }]
-          },
-          newPassword: {
-            rules: [{
-                required: true,
-                errorMessage: '新密码不能为空',
-              },
-              {
-                minLength: 6,
-                maxLength: 20,
-                errorMessage: '长度在 6 到 20 个字符'
-              }
-            ]
-          },
-          confirmPassword: {
-            rules: [{
-                required: true,
-                errorMessage: '确认密码不能为空'
-              }, {
-                validateFunction: (rule, value, data) => data.newPassword === value,
-                errorMessage: '两次输入的密码不一致'
-              }
-            ]
-          }
+            }
+          ]
+        },
+        newPassword: {
+          rules: [
+            {
+              required: true,
+              errorMessage: '新密码不能为空'
+            },
+            {
+              minLength: 6,
+              maxLength: 20,
+              errorMessage: '新密码长度应在 6 至 20 个字符之间'
+            }
+          ]
+        },
+        confirmPassword: {
+          rules: [
+            {
+              required: true,
+              errorMessage: '确认密码不能为空'
+            },
+            {
+              validateFunction: (rule, value, data) => data.newPassword === value,
+              errorMessage: '两次输入的密码不一致'
+            }
+          ]
         }
       }
-    },
-    onReady() {
-      this.$refs.form.setRules(this.rules)
-    },
-    methods: {
-      submit() {
-        this.$refs.form.validate().then(res => {
-          updateUserPwd(this.user.oldPassword, this.user.newPassword).then(response => {
-            this.$modal.msgSuccess("修改成功")
-          })
-        })
-      }
+    };
+  },
+  onReady() {
+    this.$refs.form.setRules(this.rules);
+  },
+  methods: {
+    submit() {
+      this.$refs.form.validate().then((res) => {
+        updateUserPwd(this.user.oldPassword, this.user.newPassword).then((response) => {
+          this.$modal.msgSuccess("修改成功");
+        });
+      });
     }
   }
+};
 </script>
 
 <style lang="scss">
-  page {
-    background-color: #ffffff;
-  }
+page {
+  background-color: #ffffff;
+}
 
-  .pwd-retrieve-container {
-    padding-top: 36rpx;
-    padding: 15px;
-  }
+.pwd-retrieve-container {
+  padding-top: 36rpx;
+  padding: 15px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  background-color: #f5f5f5;
+}
+
 </style>
