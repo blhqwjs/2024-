@@ -6,7 +6,7 @@ export function listGroup(query) {
 		url: '/summer/group/list',
 		method: 'get',
 		header: {
-			"Authorization": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJsb2dpbl91c2VyX2tleSI6ImI2MGE5YmIxLTFjODEtNDYwYy05NDU3LWU2MDViM2U5OTcyOSJ9.Zun_3SfIfTwoicjPLlzSYbuAMY1pTgBmUOXZigP_ZHWLPLeeBfFegQPR_VqklqsiACXV_i-RGYnINjnnybmcQA"
+			"Authorization": getApp().globalData.Authorization
 		},
 		params: query
 	})
@@ -18,7 +18,7 @@ export function getGroup(class_group_id) {
 		url: '/summer/group/' + class_group_id,
 		method: 'get',
 		header: {
-			"Authorization": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJsb2dpbl91c2VyX2tleSI6ImI2MGE5YmIxLTFjODEtNDYwYy05NDU3LWU2MDViM2U5OTcyOSJ9.Zun_3SfIfTwoicjPLlzSYbuAMY1pTgBmUOXZigP_ZHWLPLeeBfFegQPR_VqklqsiACXV_i-RGYnINjnnybmcQA"
+			"Authorization": getApp().globalData.Authorization
 		},
 	})
 }
