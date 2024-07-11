@@ -5,8 +5,6 @@
 
   export default {
 	  globalData: {
-	  	Authorization:
-		""
 	  },
 	  
     onLaunch: function() {
