@@ -1,23 +1,17 @@
 {
-  "id": "uni-segmented-control",
-  "displayName": "uni-segmented-control 分段器",
-  "version": "1.2.3",
-  "description": "分段器由至少 2 个分段控件组成，用作不同视图的显示",
+  "id": "uv-ui-tools",
+  "displayName": "uv-ui-tools 工具集 全面兼容vue3+2、app、h5、小程序等多端",
+  "version": "1.1.25",
+  "description": "uv-ui-tools，集成工具库，强大的Http请求封装，清晰的文档说明，开箱即用。方便使用，可以全局使用",
   "keywords": [
-    "uni-ui",
-    "uniui",
-    "分段器",
-    "segement",
-    "顶部选择"
+    "uv-ui-tools,uv-ui组件库,工具集,uvui,uView2.x"
 ],
-  "repository": "https://github.com/dcloudio/uni-ui",
+  "repository": "",
   "engines": {
-    "HBuilderX": ""
+    "HBuilderX": "^3.1.0"
   },
-  "directories": {
-    "example": "../../temps/example_temps"
-  },
-"dcloudext": {
+  "dcloudext": {
+    "type": "component-vue",
     "sale": {
       "regular": {
         "price": "0.00"
@@ -31,22 +25,24 @@
     },
     "declaration": {
       "ads": "无",
-      "data": "无",
+      "data": "插件不采集任何数据",
       "permissions": "无"
     },
-    "npmurl": "https://www.npmjs.com/package/@dcloudio/uni-ui",
-    "type": "component-vue"
+    "npmurl": ""
   },
   "uni_modules": {
-    "dependencies": ["uni-scss"],
+    "dependencies": [],
     "encrypt": [],
     "platforms": {
       "cloud": {
         "tcb": "y",
-        "aliyun": "y",
-        "alipay": "n"
+        "aliyun": "y"
       },
       "client": {
+        "Vue": {
+          "vue2": "y",
+          "vue3": "y"
+        },
         "App": {
           "app-vue": "y",
           "app-nvue": "y"
@@ -69,15 +65,15 @@
           "阿里": "y",
           "百度": "y",
           "字节跳动": "y",
-          "QQ": "y"
+          "QQ": "y",
+          "钉钉": "y",
+          "快手": "y",
+          "飞书": "y",
+          "京东": "y"
         },
         "快应用": {
-          "华为": "u",
-          "联盟": "u"
-        },
-        "Vue": {
-            "vue2": "y",
-            "vue3": "y"
+          "华为": "y",
+          "联盟": "y"
         }
       }
     }

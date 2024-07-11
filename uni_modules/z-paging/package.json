@@ -1,23 +1,22 @@
 {
-  "id": "uni-segmented-control",
-  "displayName": "uni-segmented-control 分段器",
-  "version": "1.2.3",
-  "description": "分段器由至少 2 个分段控件组成，用作不同视图的显示",
+  "id": "z-paging",
+  "name": "z-paging",
+  "displayName": "【z-paging下拉刷新、上拉加载】高性能，全平台兼容。支持虚拟列表，分页全自动处理",
+  "version": "2.7.11",
+  "description": "超简单、低耦合！使用wxs+renderjs实现。支持自定义下拉刷新、上拉加载更多、虚拟列表、下拉进入二楼、自动管理空数据图、无闪动聊天分页、本地分页、国际化等100+项配置",
   "keywords": [
-    "uni-ui",
-    "uniui",
-    "分段器",
-    "segement",
-    "顶部选择"
+    "下拉刷新",
+    "上拉加载",
+    "分页器",
+    "nvue",
+    "虚拟列表"
 ],
-  "repository": "https://github.com/dcloudio/uni-ui",
+  "repository": "https://github.com/SmileZXLee/uni-z-paging",
+  "types": "global.d.ts",
   "engines": {
-    "HBuilderX": ""
+    "HBuilderX": "^3.0.7"
   },
-  "directories": {
-    "example": "../../temps/example_temps"
-  },
-"dcloudext": {
+  "dcloudext": {
     "sale": {
       "regular": {
         "price": "0.00"
@@ -27,18 +26,18 @@
       }
     },
     "contact": {
-      "qq": ""
+      "qq": "393727164"
     },
     "declaration": {
       "ads": "无",
       "data": "无",
       "permissions": "无"
     },
-    "npmurl": "https://www.npmjs.com/package/@dcloudio/uni-ui",
+    "npmurl": "https://www.npmjs.com/package/z-paging",
     "type": "component-vue"
   },
   "uni_modules": {
-    "dependencies": ["uni-scss"],
+    "dependencies": [],
     "encrypt": [],
     "platforms": {
       "cloud": {
@@ -69,15 +68,19 @@
           "阿里": "y",
           "百度": "y",
           "字节跳动": "y",
-          "QQ": "y"
+          "QQ": "y",
+          "钉钉": "y",
+          "快手": "y",
+          "飞书": "y",
+          "京东": "y"
         },
         "快应用": {
-          "华为": "u",
-          "联盟": "u"
+          "华为": "y",
+          "联盟": "y"
         },
         "Vue": {
-            "vue2": "y",
-            "vue3": "y"
+          "vue2": "y",
+          "vue3": "y"
         }
       }
     }
