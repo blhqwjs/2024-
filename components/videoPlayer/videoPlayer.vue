@@ -10,6 +10,7 @@
             show-mute-btn="true"
             enable-play-gesture="true"
             vslide-gesture="true"
+			vslide-gesture-in-fullscreen="true"
             @error="videoErrorCallback" 
             @waiting="videoWaiting"
             @loadedmetadata="videoLoadOk"

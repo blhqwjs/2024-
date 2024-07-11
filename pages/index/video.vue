@@ -1,6 +1,8 @@
 <template>
 	<view>
-		<videoPlayer :title="title" videoSrc="https://www.bilibili.com/video/BV15b4y1a7yG"></videoPlayer>
+		<videoPlayer :title="title" :videoSrc="url"></videoPlayer>
+		<text>正在播放：{{title}}</text>
+		<!-- <iframe src="//player.bilibili.com/player.html?bvid=BV1ym421G7Ru&cid=1610924151&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" width="95%" height="450"></iframe> -->
 	</view>
 </template>
 
