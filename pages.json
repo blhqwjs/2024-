@@ -94,6 +94,14 @@
   		"navigationBarTitleText" : "",
   		"enablePullDownRefresh" : false
   	}
+  },
+  {
+  	"path" : "pages/index/video",
+  	"style" : 
+  	{
+  		"navigationBarTitleText" : "",
+  		"enablePullDownRefresh" : false
+  	}
   }],
   "tabBar": {
     "color": "#000000",
