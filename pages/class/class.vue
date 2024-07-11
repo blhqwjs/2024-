@@ -25,14 +25,7 @@
 			<!-- z-paging默认铺满全屏，此时页面所有view都应放在z-paging标签内，否则会被盖住 -->
 			<!-- 需要固定在页面顶部的view请通过slot="top"插入，包括自定义的导航栏 -->
 			<view class="scro_class">
-				<view class="scr_item" v-for="item in dataList" :key="item.class_id" @click="selectItem(item.class_id)">
-					<image class="image" :src="item.image"></image>
-					<text class="text">{{item.name}}</text>
-					<view class="info">
-						<text class="free">{{item.price}}</text>
-						<text class="watchTime">{{item.watchTime}}</text>
-					</view>
-				</view>
+				<class-card v-for="item in dataList" :key="item.class_id" :item="item"></class-card>
 			</view>
 		</z-paging>
 	</view>
@@ -127,7 +120,7 @@
 						statue: item.statue,
 						image: item.file_url,
 						name: item.name,
-						price: item.price + '元',
+						price: item.price,
 						watchTime: item.watchTime
 					}
 				})
@@ -163,41 +156,6 @@
 				display: flex;
 				flex-wrap: wrap;
 				justify-content: space-between;
-
-				.scr_item {
-					display: flex;
-					flex-direction: column;
-					margin-top: 20rpx;
-					align-items: center;
-					width: 48%;
-					height: auto;
-					margin-bottom: 15rpx;
-
-					.image {
-						width: 100%;
-						height: 200rpx;
-					}
-
-					.text {
-						margin-top: 10rpx;
-						font-size: 30rpx;
-						text-align: center;
-						width: 100%;
-					}
-
-					.info {
-						display: flex;
-						justify-content: space-between;
-						width: 100%;
-						padding: 0 10rpx;
-						margin-top: 10rpx;
-
-						.free,
-						.watchTime {
-							font-size: 15px;
-						}
-					}
-				}
 			}
 		}
 	}
