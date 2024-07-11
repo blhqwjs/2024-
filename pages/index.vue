@@ -8,23 +8,26 @@
 		<tn-swiper class="tn-swiper" :list="swiperImg" :title="true" :effect3d="true"></tn-swiper>
 
 		<!-- 一行2个view -->
-		<index_card :scrollItems="scrollItems" isSearchResultsVisible2="true" class="scroll"></index_card>
+		<index_card :scrollItems="scrollItems" showTag="精品课程" isSearchResultsVisible2="true" class="scroll"></index_card>
+		
+		<index_card :scrollItems="scrollItems" showTag="专题"  isSearchResultsVisible2="true" class="scroll"></index_card>
+		
+		<index_card :scrollItems="scrollItems" showTag="免费课程" isSearchResultsVisible2="true" class="scroll"></index_card>
+											   
+		<index_card :scrollItems="scrollItems" showTag="头条精选"  isSearchResultsVisible2="true" class="scroll"></index_card>
 
 	</view>
 </template>
 
 <script>
 	import {listGroup } from '@/api/summer/group'
+	import {listSummer_Class } from '@/api/summer/summer_Class.js'
+	import {listChapter } from '@/api/summer/chapter.js'
 	export default {
 
 		created() {
-			this.userId = getApp().globalData.userId;
-			
-			listGroup().then(res=>{
-				console.log(res);
-			}).catch(error=>{
-				console.log(error);
-			})
+			// this.userId = getApp().globalData.userId;
+			this.getClassList();
 		},
 		data() {
 			return {
@@ -73,12 +76,25 @@
 						watchTime: 100,
 					},
 				],
+				query:{
+					pageSize:100,
+					pageNum:1,
+					statue:1,
+				},
+				
 			};
 		},
 		methods: {
 			goToSearch() {
 				uni.navigateTo({
 					url: '/pages/index/search/search'
+				})
+			},
+			getClassList(){
+				listSummer_Class(this.query).then(res=>
+				{
+					// console.log("class: ",res.rows);
+					this.scrollItems=res.rows;
 				})
 			},
 			selectItem(index) {
@@ -130,14 +146,14 @@
 		.tn-swiper{
 			margin-top: 26rpx;
 			margin-left: 20rpx;
-			width: 90%;
+			width: 96%;
 			height: 200rpx;
 		}
 		
 		.scroll {
 			margin-top: 100rpx;
 			margin-left: 20rpx;
-			width: 90%;
+			width: 96%;
 			flex: 1; /* 添加 flex 属性 */
 		}
 		
