@@ -8,32 +8,26 @@
 		<tn-swiper class="tn-swiper" :list="swiperImg" :title="true" :effect3d="true"></tn-swiper>
 
 		<!-- 一行2个view -->
-		<scroll-view v-show="isSearchResultsVisible2" class="scroll" scroll-y>
-			<view class="scro_class">
-				<view class="scr_item" v-for="(item, index) in scrollItems" :key="index" @click="selectItem(index)">
-					<image class="image" :src="item.image"></image>
-					<text class="text">{{item.text}}</text>
-					<view class="info">
-						<text class="free">{{item.free}}</text>
-						<text class="watchTime">{{item.watchTime}}</text>
-					</view>
-				</view>
-			</view>
-		</scroll-view>
+		<index_card :scrollItems="scrollItems" showTag="精品课程" isSearchResultsVisible2="true" class="scroll"></index_card>
+		
+		<index_card :scrollItems="scrollItems" showTag="专题"  isSearchResultsVisible2="true" class="scroll"></index_card>
+		
+		<index_card :scrollItems="scrollItems" showTag="免费课程" isSearchResultsVisible2="true" class="scroll"></index_card>
+											   
+		<index_card :scrollItems="scrollItems" showTag="头条精选"  isSearchResultsVisible2="true" class="scroll"></index_card>
+
 	</view>
 </template>
 
 <script>
 	import {listGroup } from '@/api/summer/group'
+	import {listSummer_Class } from '@/api/summer/summer_Class.js'
+	import {listChapter } from '@/api/summer/chapter.js'
 	export default {
+
 		created() {
-			this.userId = getApp().globalData.userId;
-			
-			listGroup().then(res=>{
-				console.log(res);
-			}).catch(error=>{
-				console.log(error);
-			})
+			// this.userId = getApp().globalData.userId;
+			this.getClassList();
 		},
 		data() {
 			return {
@@ -82,12 +76,25 @@
 						watchTime: 100,
 					},
 				],
+				query:{
+					pageSize:100,
+					pageNum:1,
+					statue:1,
+				},
+				
 			};
 		},
 		methods: {
 			goToSearch() {
 				uni.navigateTo({
 					url: '/pages/index/search/search'
+				})
+			},
+			getClassList(){
+				listSummer_Class(this.query).then(res=>
+				{
+					// console.log("class: ",res.rows);
+					this.scrollItems=res.rows;
 				})
 			},
 			selectItem(index) {
@@ -109,21 +116,19 @@
 		justify-content: center;
 		background: linear-gradient(#E1E6F5, #FFFFFF, #c0bbff);
 		height: 100%;
-		
-		
 
 		.search-box {
 			width: 90%;
-			margin-top: 8rpx;
-			padding-left: 10rpx;
+			margin-top: 100rpx;
+			padding-left: 45rpx;
 			text-align: center;
-			position: fixed;
+			// position: fixed;
 			top: 6.5%;
 			height: 10%;
 			z-index: 500;
 
 			.search-input {
-				width: 80%;
+				width: 75%;
 				height: 50rpx;
 				border: 1rpx solid #000;
 				border-radius: 20rpx;
@@ -139,57 +144,19 @@
 		}
 		
 		.tn-swiper{
-			margin-top: 126rpx;
+			margin-top: 26rpx;
 			margin-left: 20rpx;
-			width: 90%;
+			width: 96%;
 			height: 200rpx;
 		}
-
+		
 		.scroll {
-			height: 70%;
-			width: 730rpx;
-			margin-top: 260rpx;
-
-			.scro_class {
-				display: flex;
-				flex-wrap: wrap;
-				justify-content: space-between;
-
-				.scr_item {
-					display: flex;
-					flex-direction: column;
-					margin-top: 20rpx;
-					align-items: center;
-					width: 48%;
-					height: auto;
-					margin-bottom: 15rpx;
-
-					.image {
-						width: 100%;
-						height: 200rpx;
-					}
-
-					.text {
-						margin-top: 10rpx;
-						font-size: 30rpx;
-						text-align: center;
-						width: 100%;
-					}
-
-					.info {
-						display: flex;
-						justify-content: space-between;
-						width: 100%;
-						padding: 0 10rpx;
-						margin-top: 10rpx;
-
-						.free,
-						.watchTime {
-							font-size: 15px;
-						}
-					}
-				}
-			}
+			margin-top: 100rpx;
+			margin-left: 20rpx;
+			width: 96%;
+			flex: 1; /* 添加 flex 属性 */
 		}
+		
+
 	}
 </style>
