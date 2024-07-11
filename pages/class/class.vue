@@ -124,6 +124,7 @@
 					return {
 						class_id: item.class_id,
 						class_group_id: item.class_group_id,
+						statue: item.statue,
 						image: item.file_url,
 						name: item.name,
 						price: item.price + '元',
@@ -135,12 +136,14 @@
 			// 筛选课程
 			filterClass() {
 				this.currentClassList = this.classList.filter(item => {
-					return item.class_group_id === this.current;
+					return item.class_group_id === this.current && item.statue == 1;
 				})
 			}
 		},
 		async mounted() {
-			const res = await listGroup();
+			const res = await listGroup({
+				pageSize: 999999
+			});
 			this.list = res.rows.map(item => {
 				return {
 					class_group_id: item.class_group_id,
