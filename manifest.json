@@ -1,6 +1,6 @@
 {
     "name" : "咸鱼云课堂",
-    "appid" : "__UNI__25A9D80",
+    "appid" : "__UNI__3550701",
     "description" : "",
     "versionName" : "1.1.0",
     "versionCode" : "100",
@@ -41,7 +41,7 @@
     },
     "quickapp" : {},
     "mp-weixin" : {
-        "appid" : "",
+        "appid" : "wxc7eb3546a268d3f6",
         "setting" : {
             "urlCheck" : false,
             "es6" : false,
