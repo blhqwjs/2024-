@@ -3,7 +3,7 @@
     <view class="logo-content align-center justify-center flex">
       <image style="width: 100rpx;height: 100rpx;" :src="globalConfig.appInfo.logo" mode="widthFix">
       </image>
-      <text class="title">若依移动端登录</text>
+      <text class="title">咸鱼云课堂登录</text>
     </view>
     <view class="login-form-content">
       <view class="input-item flex align-center">
@@ -47,11 +47,11 @@
         codeUrl: "",
         captchaEnabled: true,
         // 用户注册开关
-        register: false,
+        register: true,
         globalConfig: getApp().globalData.config,
         loginForm: {
-          username: "admin",
-          password: "admin123",
+          username: "",
+          password: "",
           code: "",
           uuid: ''
         }

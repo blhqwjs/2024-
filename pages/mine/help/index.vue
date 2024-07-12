@@ -25,7 +25,7 @@ export default {
           title: '本软件开源吗',
           childList: [
             { title: '本软件开源吗？', content: '开源' },
-            { title: '本软件可以商用吗？', content: '可以' },
+            { title: '本软件可以商用吗？', content: '请联系开发者' },
             { title: '本软件官网地址多少？', content: 'https://github.com/blhqwjs/2024-' },
             { title: '本软件文档地址多少？', content: 'https://github.com/blhqwjs/2024-' }
           ]
