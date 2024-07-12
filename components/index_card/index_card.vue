@@ -65,7 +65,7 @@
 			},
 			gotToMore(item) {
 				uni.navigateTo({
-					url:"/pages/index/detail?item="+ JSON.stringify(item),
+					url:"/pages/more/more?scrollItem="+ JSON.stringify(item),
 				})
 			}
 		},

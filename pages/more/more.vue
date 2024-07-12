@@ -14,14 +14,16 @@
 </template>
 
 <script>
-	import {listGroup } from '@/api/summer/group'
-	import {listSummer_Class } from '@/api/summer/summer_Class.js'
-	import {listChapter } from '@/api/summer/chapter.js'
 	export default {
 
 		created() {
 			// this.userId = getApp().globalData.userId;
-			this.getClassList();
+			this.scrollItems=JSON.parse(this.scrollItem);
+		},
+		props:{
+			scrollItem:{
+				
+			}	
 		},
 		data() {
 			return {
@@ -33,43 +35,7 @@
 				  {image: 'https://resource.tuniaokj.com/images/swiper/autumn.jpg', title: '秋天'},
 				  {image: 'https://resource.tuniaokj.com/images/swiper/winter.jpg', title: '冬天'},
 				],
-				scrollItems: [{
-						image: '/static/images/index1.png',
-						text: '宇哥带你学Java之消息队列MO',
-						free: "免费",
-						watchTime: 100,
-					},
-					{
-						image: '/static/images/index1.png',
-						text: '宇哥带你学Java之消息队列MO',
-						free: "免费",
-						watchTime: 100,
-					},
-					{
-						image: '/static/images/index1.png',
-						text: '宇哥带你学Java之消息队列MO',
-						free: "免费",
-						watchTime: 100,
-					},
-					{
-						image: '/static/images/index1.png',
-						text: '宇哥带你学Java之消息队列MO',
-						free: "免费",
-						watchTime: 100,
-					},
-					{
-						image: '/static/images/index1.png',
-						text: '宇哥带你学Java之消息队列MO',
-						free: "免费",
-						watchTime: 100,
-					},
-					{
-						image: '/static/images/index1.png',
-						text: '宇哥带你学Java之消息队列MO',
-						free: "免费",
-						watchTime: 100,
-					},
-				],
+				scrollItems: [],
 				query:{
 					pageSize:100,
 					pageNum:1,
@@ -84,13 +50,13 @@
 					url: '/pages/index/search/search'
 				})
 			},
-			getClassList(){
-				listSummer_Class(this.query).then(res=>
-				{
-					// console.log("class: ",res.rows);
-					this.scrollItems=res.rows;
-				})
-			},
+			// getClassList(){
+			// 	listSummer_Class(this.query).then(res=>
+			// 	{
+			// 		// console.log("class: ",res.rows);
+			// 		// this.scrollItems=res.rows;
+			// 	})
+			// },
 			selectItem(index) {
 				const item = this.scrollItems[index];
 				this.selectedCategory = item.text;
@@ -141,7 +107,7 @@
 					}
 
 					.text {
-						font-size: 20rpx;
+						font-size: 27rpx;
 						text-align: left;
 						margin-top: 10rpx;
 						margin-left: 2rpx;
