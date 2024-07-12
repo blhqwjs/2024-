@@ -1,20 +1,20 @@
 {
   "pages": [
-	 //  {
-  //   "path": "pages/login",
-  //   "style": {
-  //     "navigationBarTitleText": "登录"
-  //   }
-  // }, {
-  //   "path": "pages/register",
-  //   "style": {
-  //     "navigationBarTitleText": "注册"
-  //   }
-  // },
+	  {
+    "path": "pages/login",
+    "style": {
+      "navigationBarTitleText": "登录"
+    }
+  }, {
+    "path": "pages/register",
+    "style": {
+      "navigationBarTitleText": "注册"
+    }
+  },
   {
     "path": "pages/index",
     "style": {
-      "navigationBarTitleText": "若依移动端框架",
+      "navigationBarTitleText": "咸鱼云课堂首页",
       "navigationStyle": "custom"
     }
   }, {
@@ -142,7 +142,7 @@
   },
   "globalStyle": {
     "navigationBarTextStyle": "black",
-    "navigationBarTitleText": "RuoYi",
+    "navigationBarTitleText": "咸鱼云课堂",
     "navigationBarBackgroundColor": "#FFFFFF"
   }
 }

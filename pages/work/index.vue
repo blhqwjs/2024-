@@ -20,6 +20,7 @@
 			        </view>
 			    </record-view>
 			</swiper-item>
+			
 			<swiper-item class="swiper-item">
 					<collect-view v-show="isSearchResultsVisible2" class="collect" collect-y>
 						<view class="collect_class">
@@ -35,7 +36,6 @@
 					</collect-view>
 			</swiper-item>
 		</swiper>
-	
 	</view>
 	
 </template>
@@ -69,10 +69,9 @@ import { listChapter } from '@/api/summer/chapter.js'
 				this.currentSwiperIndex = index
 			},
 			
-			
 			getRecordsList(){
 				const record = {
-					user_id : "2"
+					user_id : getApp().globalData.user_id,
 				}
 				
 				//获取观看历史
@@ -82,13 +81,11 @@ import { listChapter } from '@/api/summer/chapter.js'
 					
 					//使用 Set 来确保 class_id 不重复
 					const classIdList = new Set();
-					console.log(res.rows)
 					//获取课程id
 					res.rows.forEach(item =>{
 						classIdList.add(item.class_id)
 						
 					});
-					console.log(classIdList);
 					
 					// 转换为数组并按顺序提取 creat_time 和 class_id
 					const records = [...classIdList].map(classId => {
@@ -98,7 +95,7 @@ import { listChapter } from '@/api/summer/chapter.js'
 							classId: classId,
 						};
 					})
-					console.log(records)
+					// console.log(records)
 					//观看历史所需对象
 					
 					records.forEach(item =>{
@@ -111,7 +108,7 @@ import { listChapter } from '@/api/summer/chapter.js'
 							});
 						})
 					})
-					console.log(this.recordList)
+					// console.log(this.recordList)
 					
 				})
 				.catch(error => {
@@ -126,7 +123,7 @@ import { listChapter } from '@/api/summer/chapter.js'
 				this.collectList = [];
 				
 				const record = {
-					user_id : "2"
+					user_id : getApp().globalData.user_id,
 				}
 				//获取我的收藏	
 				listRecords(record).then(res => {
@@ -140,15 +137,13 @@ import { listChapter } from '@/api/summer/chapter.js'
 						classIds.push(res.class_id)
 					}
 				})
-				console.log(classIds)
 				
 				classIds.forEach(ids =>{
 					getSummer_Class(ids).then(res =>{
-						console.log(res.data)
+						// console.log(res.data)
 						
 						listChapter(this.query).then(chapters =>{
 							let sum = 0;
-							console.log(chapters)
 							chapters.rows.forEach(chapter =>{
 								if(chapter.class_id === ids){
 									sum += chapter.study_num;
@@ -169,7 +164,7 @@ import { listChapter } from '@/api/summer/chapter.js'
 						
 					})
 				})
-				console.log(this.collectList)
+				// console.log(this.collectList)
 				
 				}).catch(error => {
 				// 处理错误
@@ -185,6 +180,7 @@ import { listChapter } from '@/api/summer/chapter.js'
 <style lang="scss" scoped>
 	#sns {
 		background-color: #f1f1f1;
+		height: 100%;
 	}
 	
 	// 推荐、咨询 按钮样式
@@ -192,6 +188,7 @@ import { listChapter } from '@/api/summer/chapter.js'
 		display: flex;
 		flex-direction: row;
 		justify-content: center;
+		height: var(--status-bar-height);
 		width: 750upx;
 	
 		.one-nav {
@@ -224,7 +221,7 @@ import { listChapter } from '@/api/summer/chapter.js'
 		flex-direction: column;
 		align-items: center;
 		justify-content: center;
-		background: linear-gradient(#E1E6F5, #FFFFFF, #c0bbff);
+		// background: linear-gradient(#E1E6F5, #FFFFFF, #c0bbff);
 		height: 100%;
 		
 		.swiper-item{

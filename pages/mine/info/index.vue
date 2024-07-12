@@ -22,20 +22,20 @@
         :rightText="user.email" 
         class="list-item"
       />
-      <uni-list-item 
+<!--      <uni-list-item 
         showExtraIcon="true" 
         :extraIcon="{type: 'auth-filled'}" 
         title="岗位" 
         :rightText="postGroup" 
         class="list-item"
-      />
-      <uni-list-item 
+      /> -->
+<!--      <uni-list-item 
         showExtraIcon="true" 
         :extraIcon="{type: 'staff-filled'}" 
         title="角色" 
         :rightText="roleGroup" 
         class="list-item"
-      />
+      /> -->
       <uni-list-item 
         showExtraIcon="true" 
         :extraIcon="{type: 'calendar-filled'}" 

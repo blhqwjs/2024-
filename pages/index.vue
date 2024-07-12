@@ -22,11 +22,17 @@
 <script>
 	import {listGroup } from '@/api/summer/group'
 	import {listSummer_Class } from '@/api/summer/summer_Class.js'
-	import {listChapter } from '@/api/summer/chapter.js'
+	import {getUserProfile } from '@/api/system/user.js'
+	
+	
 	export default {
 
 		created() {
-			// this.userId = getApp().globalData.userId;
+			{
+				getUserProfile().then(res=>{
+					getApp().globalData.user_id=res.data.userId;
+				})
+			}
 			this.getClassList();
 		},
 		data() {
