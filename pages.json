@@ -102,6 +102,13 @@
   		"navigationBarTitleText" : "",
   		"enablePullDownRefresh" : false
   	}
+  },
+  {
+  	"path" : "pages/more/more",
+  	"style" : 
+  	{
+  		"navigationBarTitleText" : ""
+  	}
   }],
   "tabBar": {
     "color": "#000000",
