@@ -19,17 +19,17 @@
         this.initConfig()
         // 检查用户登录状态
         //#ifdef H5
-        // this.checkLogin()
+        this.checkLogin()
         //#endif
       },
       initConfig() {
         this.globalData.config = config
       },
-      // checkLogin() {
-      //   if (!getToken()) {
-      //     this.$tab.reLaunch('/pages/login') 
-      //   }
-      // }
+      checkLogin() {
+        if (!getToken()) {
+          this.$tab.reLaunch('/pages/login') 
+        }
+      }
     }
   }
 </script>
