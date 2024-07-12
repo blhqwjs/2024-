@@ -16,7 +16,6 @@
 		----index.vue 首页 <br>
 		----login.vue 登录 <br>
 		----register.vue 注册 <br>
-		
 	----static: 静态文件 <br>
 	----uni_modules: npm相关组件 <br>
 
