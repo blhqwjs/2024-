@@ -128,7 +128,7 @@
                     }
                 });
 
-                console.log(this.characterList);
+                // console.log(this.characterList);
             },
 			goToMv(URL,Title){
 				uni.navigateTo({
@@ -150,7 +150,7 @@
                 });
             },
             playVideo(video) {
-                console.log('播放视频：', video);
+                // console.log('播放视频：', video);
             }
         }
     };

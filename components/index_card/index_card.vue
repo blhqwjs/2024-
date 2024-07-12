@@ -1,7 +1,7 @@
 <template>
 	<view>
 		<scroll-view v-show="isSearchResultsVisible2" class="scroll" scroll-y>
-			<view class="card_tag" v-show="showTag">{{showTag}}      <span style="color:#5C6367; margin-left: 60%;">更多>></span>   </view>
+			<view class="card_tag" v-show="showTag">{{showTag}}      <span style="color:#5C6367; margin-left: 60%;" @click="gotToMore(filteredItems)">更多>></span>   </view>
 			<view class="scro_class">
 				<view class="scr_item" v-for="(item, index) in filteredItems" :key="index" @click="selectItem(index)">
 					<image class="image" :src="item.file_url" @click="goToDetail(item)"></image>
@@ -59,6 +59,11 @@
 				this.selectedCategory = item.text;
 			},
 			goToDetail(item) {
+				uni.navigateTo({
+					url:"/pages/index/detail?item="+ JSON.stringify(item),
+				})
+			},
+			gotToMore(item) {
 				uni.navigateTo({
 					url:"/pages/index/detail?item="+ JSON.stringify(item),
 				})
