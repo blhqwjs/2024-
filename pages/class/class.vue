@@ -102,28 +102,12 @@
 				this.$refs.paging.reload();
 			},
 
-			// 点击单个课程
-			selectItem(index) {
-				const item = this.scrollItems[index];
-				console.log(item);
-			},
-
 			// 获取课程
 			async getListSummerClass() {
 				const res = await listSummer_Class({
 					pageSize: 999999999
 				});
-				this.classList = res.rows.map(item => {
-					return {
-						class_id: item.class_id,
-						class_group_id: item.class_group_id,
-						statue: item.statue,
-						image: item.file_url,
-						name: item.name,
-						price: item.price,
-						watchTime: item.watchTime
-					}
-				})
+				this.classList = res.rows;
 			},
 
 			// 筛选课程

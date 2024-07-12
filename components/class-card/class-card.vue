@@ -1,6 +1,6 @@
 <template>
 	<view class="scr_item" @click="clickSkip">
-		<image class="image" :src="item.image"></image>
+		<image class="image" :src="item.file_url" mode="aspectFit"></image>
 		<text class="text">{{item.name}}</text>
 		<view class="info">
 			<text class="free" v-if="item.price == 0">免费课程</text>
@@ -24,7 +24,9 @@
 		},
 		methods: {
 			clickSkip() {
-				console.log("跳转",this.item.class_id);
+				uni.navigateTo({
+					url:`/pages/index/detail?item=${JSON.stringify(this.item)}`,
+				})
 			}
 		}
 	}
@@ -36,7 +38,7 @@
 		flex-direction: column;
 		margin-top: 20rpx;
 		align-items: center;
-		width: 48%;
+		width: 48vw;
 		height: auto;
 		margin-bottom: 15rpx;
 
