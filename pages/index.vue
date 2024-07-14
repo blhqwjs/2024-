@@ -45,42 +45,7 @@
 				  {image: 'https://resource.tuniaokj.com/images/swiper/autumn.jpg', title: '秋天'},
 				  {image: 'https://resource.tuniaokj.com/images/swiper/winter.jpg', title: '冬天'},
 				],
-				scrollItems: [{
-						image: '/static/images/index1.png',
-						text: '宇哥带你学Java之消息队列MO',
-						free: "免费",
-						watchTime: 100,
-					},
-					{
-						image: '/static/images/index1.png',
-						text: '宇哥带你学Java之消息队列MO',
-						free: "免费",
-						watchTime: 100,
-					},
-					{
-						image: '/static/images/index1.png',
-						text: '宇哥带你学Java之消息队列MO',
-						free: "免费",
-						watchTime: 100,
-					},
-					{
-						image: '/static/images/index1.png',
-						text: '宇哥带你学Java之消息队列MO',
-						free: "免费",
-						watchTime: 100,
-					},
-					{
-						image: '/static/images/index1.png',
-						text: '宇哥带你学Java之消息队列MO',
-						free: "免费",
-						watchTime: 100,
-					},
-					{
-						image: '/static/images/index1.png',
-						text: '宇哥带你学Java之消息队列MO',
-						free: "免费",
-						watchTime: 100,
-					},
+				scrollItems: [
 				],
 				query:{
 					pageSize:100,
@@ -93,14 +58,14 @@
 		methods: {
 			goToSearch() {
 				uni.navigateTo({
-					url: '/pages/index/search/search'
+					url: '/pages/index/search'
 				})
 			},
 			getClassList(){
 				listSummer_Class(this.query).then(res=>
 				{
-					// console.log("class: ",res.rows);
 					this.scrollItems=res.rows;
+					console.log(this.scrollItems);
 				})
 			},
 			selectItem(index) {

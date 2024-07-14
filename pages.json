@@ -91,7 +91,7 @@
   	"path" : "pages/index/detail",
   	"style" : 
   	{
-  		"navigationBarTitleText" : "",
+  		"navigationBarTitleText" : "课程详情",
   		"enablePullDownRefresh" : false
   	}
   },
@@ -99,7 +99,7 @@
   	"path" : "pages/index/video",
   	"style" : 
   	{
-  		"navigationBarTitleText" : "",
+  		"navigationBarTitleText" : "课程播放",
   		"enablePullDownRefresh" : false
   	}
   },
@@ -108,6 +108,14 @@
   	"style" : 
   	{
   		"navigationBarTitleText" : ""
+  	}
+  },
+  {
+  	"path" : "pages/index/search",
+  	"style" : 
+  	{
+  		"navigationBarTitleText" : "",
+  		"enablePullDownRefresh" : false
   	}
   }],
   "tabBar": {
