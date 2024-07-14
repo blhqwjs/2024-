@@ -65,6 +65,7 @@
 				listSummer_Class(this.query).then(res=>
 				{
 					this.scrollItems=res.rows;
+					console.log(this.scrollItems);
 				})
 			},
 			selectItem(index) {

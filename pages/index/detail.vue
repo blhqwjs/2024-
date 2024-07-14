@@ -2,7 +2,8 @@
     <view class="container">
         <view class="section">
             <view class="course-info">
-                <button class="course-button" v-show="items.price === 0">免费课程</button>
+                <!-- <button class="course-button" v-show="items.price === 0">免费课程</button> -->
+				<image class="img1" :src="items.file_url"></image>
                 <button class="course-button" v-show="items.price !== 0">￥{{items.price}}</button>
                 <view class="course-description">
                     {{ items.name }}
@@ -105,7 +106,7 @@
         methods: {
             organizeChapters(chapters) {
                 let firstindex = 0;
-                let secendindex = 0;
+                // let secendindex = 0;
                 this.characterList = [];
                 //以下是数据展示类型的转换，需要转换为上文的video类型，
                 chapters.forEach(chapter => {
@@ -120,7 +121,7 @@
                         firstindex++; //这个实际没啥用了，就是统计有多少个
                     } else {
                         let parentIndex = this.characterList.findIndex(item => item.id === chapter.father_chapter_id);
-                        //当章节的id与father_chapter_id一致，则说明产生分级关系，产生为子章节
+                        //当章节的id与father_chapter_id一致，则说明产生分级关系，产生为子章节.
                         //Array.prototype.findIndex 方法：查找数组中符合条件的元素的索引。
                         // 如果找到了符合条件的元素，则返回该元素在数组中的索引。如果没有找到符合条件的元素，则返回 -1
                         // 实际底层代码就是一个“--i”，到节点终点，仍然找不到，再次"--i"返回-1
@@ -172,7 +173,11 @@
 		background-color: #f0f0f0;
 		/* 灰色背景 */
 	}
-
+	.img1{
+		width:600rpx;
+		height: 400rpx;
+		
+	}
 	.container {
 		display: flex;
 		flex-direction: column;
@@ -186,6 +191,7 @@
 		/* 每个部分的背景为白色 */
 		padding: 20px;
 		border-radius: 10px;
+		// margin-bottom: 50rpx;
 		box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 	}
 
@@ -267,6 +273,7 @@
 		border: 1px solid #ddd;
 		border-radius: 5px;
 		transition: background-color 0.3s;
+		margin-bottom: 20rpx;
 	}
 
 	.video-item:hover {
@@ -284,14 +291,14 @@
 
 	.bottom-bar {
 		position: fixed;
-		bottom: 10px; /* 距离底部20px */
+		bottom: 0px; /* 距离底部20px */
 		left: 0;
 		width: 100%;
 		display: flex;
 		background-color: white;
 		box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
 		border-top: 1px solid #ddd;
-		height: 70px;
+		height: 90rpx;
 	}
 
 	.bottom-item {
