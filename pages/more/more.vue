@@ -77,58 +77,6 @@
 		background: linear-gradient(#E1E6F5, #FFFFFF, #c0bbff);
 		height: 100%;
 
-		.tn-swiper{
-			margin-top: 126rpx;
-			margin-left: 20rpx;
-			width: 90%;
-			height: 200rpx;
-		}
-
-		.scroll {
-			height: 70%;
-			width: 730rpx;
-
-			.scro_class {
-				display: flex;
-				flex-wrap: wrap;
-				flex-direction: column;
-				justify-content: space-between;
-
-				.scr_item {
-					display: flex;
-					margin-top: 20rpx;
-					width: 100%;
-					height: auto;
-					margin-bottom: 15rpx;
-
-					.image {
-						width: 50%;
-						height: 200rpx;
-					}
-
-					.text {
-						font-size: 27rpx;
-						text-align: left;
-						margin-top: 10rpx;
-						margin-left: 2rpx;
-						width: 80%;
-						white-space: pre-wrap;
-					}
-
-					.info {
-						display: flex;
-						justify-content: space-between;
-						width: 100%;
-						padding: 0 10rpx;
-						margin-top: 10rpx;
-
-						.free,
-						.watchTime {
-							font-size: 15px;
-						}
-					}
-				}
-			}
-		}
+		
 	}
 </style>

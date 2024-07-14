@@ -1,7 +1,8 @@
 <template>
 	<view>
 		<scroll-view v-show="isSearchResultsVisible2" class="scroll" scroll-y>
-			<view class="card_tag" v-show="showTag">{{showTag}}      <span style="color:#5C6367; margin-left: 60%;" @click="gotToMore(filteredItems)">更多>></span>   </view>
+			<view class="card_tag" v-show="showTag">{{showTag}} <span style="color:#5C6367; margin-left: 60%;"
+					@click="gotToMore(filteredItems)">更多>></span> </view>
 			<view class="scro_class">
 				<view class="scr_item" v-for="(item, index) in filteredItems" :key="index" @click="selectItem(index)">
 					<image class="image" :src="item.file_url" @click="goToDetail(item)"></image>
@@ -48,26 +49,26 @@
 		created() {
 			// console.log(this.scrollItems);
 		},
-		computed:{
-			 filteredItems() {
-			      return this.scrollItems.filter((item) => item.tag_id === this.showTag);
+		computed: {
+			filteredItems() {
+				return this.scrollItems.filter((item) => item.tag_id === this.showTag);
 			},
 		},
 		methods: {
-			selectItem(index) {
-				const item = this.scrollItems[index];
-				this.selectedCategory = item.text;
-			},
 			goToDetail(item) {
 				uni.navigateTo({
-					url:"/pages/index/detail?item="+ JSON.stringify(item),
+					url: "/pages/index/detail?item=" + JSON.stringify(item),
 				})
 			},
 			gotToMore(item) {
 				uni.navigateTo({
-					url:"/pages/more/more?scrollItem="+ JSON.stringify(item),
+					url: "/pages/more/more?scrollItem=" + JSON.stringify(item),
 				})
-			}
+			},
+			selectItem(index) {
+				const item = this.scrollItems[index];
+				this.selectedCategory = item.text;
+			},
 		},
 
 	}
@@ -81,12 +82,14 @@
 		height: 100%;
 		/* 确保 scroll-view 填充父容器 */
 		width: 100%;
+
 		/* 确保 scroll-view 填充父容器 */
-		.card_tag{
+		.card_tag {
 			font-size: 34rpx;
 			color: #21252B;
 			margin-bottom: 20rpx;
 		}
+
 		.scro_class {
 			display: flex;
 			flex-wrap: wrap;

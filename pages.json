@@ -109,6 +109,14 @@
   	{
   		"navigationBarTitleText" : ""
   	}
+  },
+  {
+  	"path" : "pages/index/search",
+  	"style" : 
+  	{
+  		"navigationBarTitleText" : "",
+  		"enablePullDownRefresh" : false
+  	}
   }],
   "tabBar": {
     "color": "#000000",
