@@ -1,169 +1,184 @@
 <template>
-    <view class="container">
-        <view class="section">
-            <view class="course-info">
-                <!-- <button class="course-button" v-show="items.price === 0">免费课程</button> -->
+	<view class="container">
+		<view class="section">
+			<view class="course-info">
+				<!-- <button class="course-button" v-show="items.price === 0">免费课程</button> -->
 				<image class="img1" :src="items.file_url"></image>
-                <button class="course-button" v-show="items.price !== 0">￥{{items.price}}</button>
-                <view class="course-description">
-                    {{ items.name }}
-                    <view class="learning-count"> 一般 2小时55分钟 {{ learningCount }} 人学</view>
-                </view>
-            </view>
-        </view>
-        <view class="section">
-            <view class="summary">
-                <view class="summary-title">简介</view><br />
-                <view class="summary-content">
-                    {{items.intro}}
-                </view>
-            </view>
-        </view>
-        <view class="section">
-            <view class="summary-title">章节</view><br /><br />
-            <view class="video-list">
-                <view class="video-category" v-for="category in characterList" :key="category.id">
-                    <view class="video-category-title">
-                        {{ category.title }}
-                    </view>
-                    <view class="video-item" v-for="video in category.videos" :key="video.id" @click="playVideo(video)">
-                        <view class="play-button">▶️</view>
-                        <view class="video-title" @click="goToMv(video.url,video.title)">
-                            {{ video.title }} {{ video.duration }}
-                        </view>
-                    </view>
-                </view>
-            </view>
-        </view>
-        <view class="bottom-bar">
-            <view class="bottom-item" @click="collectCourse">收藏</view>
-            <view class="separator"></view>
-            <view class="bottom-item">分享</view>
-            <view class="separator"></view>
-            <view class="bottom-item large">立即学习</view>
-        </view>
-    </view>
+				<button class="course-button" v-show="items.price !== 0">￥{{items.price}}</button>
+				<view class="course-description">
+					{{ items.name }}
+					<view class="learning-count"> 一般 2小时55分钟 {{ learningCount }} 人学</view>
+				</view>
+			</view>
+		</view>
+		<view class="section">
+			<view class="summary">
+				<view class="summary-title">简介</view><br />
+				<view class="summary-content">
+					{{items.intro}}
+				</view>
+			</view>
+		</view>
+		<view class="section">
+			<view class="summary-title">章节</view><br /><br />
+			<view class="video-list">
+				<view class="video-category" v-for="category in characterList" :key="category.id">
+					<view class="video-category-title">
+						{{ category.title }}
+					</view>
+					<view class="video-item" v-for="video in category.videos" :key="video.id">
+						<view class="play-button">▶️</view>
+						<view class="video-title" @click="goToMv(video.url,video.title)">
+							{{ video.title }} {{ video.duration }}
+						</view>
+					</view>
+				</view>
+			</view>
+		</view>
+		<view class="bottom-bar">
+			<view class="bottom-item" @click="collectCourse">收藏</view>
+			<view class="separator"></view>
+			<view class="bottom-item">分享</view>
+			<view class="separator"></view>
+			<view class="bottom-item large" @click="goToMv(characterList[0].videos[0].url,characterList[0].videos[0].title)">立即学习</view>
+		</view>
+	</view>
 </template>
 
 <script>
-    import { listChapter } from "@/api/summer/chapter.js"
+	import {
+		listChapter
+	} from "@/api/summer/chapter.js";
+	import {
+		addRecords
+	} from "@/api/summer/records.js";
 
-    export default {
-        created() {
-            this.items = JSON.parse(this.item);
-            this.query.class_id = this.items.class_id;
-            this.getChapter();
-        },
-      //props接收从首页传递的数据。
-        props: {
-            item: {
-                default: [],
-            }
-        },
-        data() {
-            return {
-                courseDescription: '宇哥带你学java',
-                learningCount: 0,
-                items: [],
-                coursejianjie: ' 这是一个非常有趣的课程简介，内容可以根据实际情况填充。',
-                query: {
-                    pageNum: 1,
-                    pageSize: 100,
-                    class_id: 0,
-                },
-                characterList: [],
-                videoCategories: [{
-                        title: 'MQ',
-                        videos: [{
-                                id: 1,
-                                title: '1-1 MQ安装',
-                                duration: '(20分钟)'
-                            },
-                            {
-                                id: 2,
-                                title: '1-2 MQ初识',
-                                duration: '(25分钟)'
-                            }
-                        ]
-                    },
-                    {
-                        title: 'MQ2',
-                        videos: [{
-                                id: 3,
-                                title: '2-1 上节总结',
-                                duration: '(15分钟)'
-                            },
-                            {
-                                id: 4,
-                                title: '2-2 工作列表',
-                                duration: '(30分钟)'
-                            }
-                        ]
-                    }
-                ]
-            };
-        },
-        methods: {
-            organizeChapters(chapters) {
-                let firstindex = 0;
-                // let secendindex = 0;
-                this.characterList = [];
-                //以下是数据展示类型的转换，需要转换为上文的video类型，
-                chapters.forEach(chapter => {
-                    if (chapter.father_chapter_id === null) {
-                      //如果父节点，即father_chapter_id为空，意味着其为课程下的大章节，即title
-                        this.characterList.push({
-                          //按照属性，为其添加数据
-                            id: chapter.chapter_id,
-                            title: chapter.name,
-                            videos: [],
-                        });
-                        firstindex++; //这个实际没啥用了，就是统计有多少个
-                    } else {
-                        let parentIndex = this.characterList.findIndex(item => item.id === chapter.father_chapter_id);
-                        //当章节的id与father_chapter_id一致，则说明产生分级关系，产生为子章节.
-                        //Array.prototype.findIndex 方法：查找数组中符合条件的元素的索引。
-                        // 如果找到了符合条件的元素，则返回该元素在数组中的索引。如果没有找到符合条件的元素，则返回 -1
-                        // 实际底层代码就是一个“--i”，到节点终点，仍然找不到，再次"--i"返回-1
-                        if (parentIndex !== -1) {
-                            this.characterList[parentIndex].videos.push({
-                              //找到了就按index索引，放进去数据。
-                                id: chapter.chapter_id,
-                                title: chapter.name,
-                                duration: '(' + chapter.duration + '分钟)',
-                                url: chapter.file_url,
-                            });
-                        }
-                    }
-                });
+	export default {
+		created() {
+			this.items = JSON.parse(this.item);
+			this.query.class_id = this.items.class_id;
+			this.getChapter();
+		},
+		//props接收从首页传递的数据。
+		props: {
+			item: {
+				default: [],
+			}
+		},
+		data() {
+			return {
+				courseDescription: '宇哥带你学java',
+				learningCount: 0,
+				items: [],
+				coursejianjie: ' 这是一个非常有趣的课程简介，内容可以根据实际情况填充。',
+				query: {
+					pageNum: 1,
+					pageSize: 100,
+					class_id: 0,
+				},
+				characterList: [],
+				videoCategories: [{
+						title: 'MQ',
+						videos: [{
+								id: 1,
+								title: '1-1 MQ安装',
+								duration: '(20分钟)'
+							},
+							{
+								id: 2,
+								title: '1-2 MQ初识',
+								duration: '(25分钟)'
+							}
+						]
+					},
+					{
+						title: 'MQ2',
+						videos: [{
+								id: 3,
+								title: '2-1 上节总结',
+								duration: '(15分钟)'
+							},
+							{
+								id: 4,
+								title: '2-2 工作列表',
+								duration: '(30分钟)'
+							}
+						]
+					}
+				]
+			};
+		},
+		methods: {
+			organizeChapters(chapters) {
+				let firstindex = 0;
+				// let secendindex = 0;
+				this.characterList = [];
+				//以下是数据展示类型的转换，需要转换为上文的video类型，
+				chapters.forEach(chapter => {
+					if (chapter.father_chapter_id === null) {
+						//如果父节点，即father_chapter_id为空，意味着其为课程下的大章节，即title
+						this.characterList.push({
+							//按照属性，为其添加数据
+							id: chapter.chapter_id,
+							title: chapter.name,
+							videos: [],
+						});
+						firstindex++; //这个实际没啥用了，就是统计有多少个
+					} else {
+						let parentIndex = this.characterList.findIndex(item => item.id === chapter
+							.father_chapter_id);
+						//当章节的id与father_chapter_id一致，则说明产生分级关系，产生为子章节.
+						//Array.prototype.findIndex 方法：查找数组中符合条件的元素的索引。
+						// 如果找到了符合条件的元素，则返回该元素在数组中的索引。如果没有找到符合条件的元素，则返回 -1
+						// 实际底层代码就是一个“--i”，到节点终点，仍然找不到，再次"--i"返回-1
+						if (parentIndex !== -1) {
+							this.characterList[parentIndex].videos.push({
+								//找到了就按index索引，放进去数据。
+								id: chapter.chapter_id,
+								title: chapter.name,
+								duration: '(' + chapter.duration + '分钟)',
+								url: chapter.file_url,
+							});
+						}
+					}
+				});
 
-                // console.log(this.characterList);
-            },
-			goToMv(URL,Title){
+				// console.log(this.characterList);
+			},
+			async goToMv(URL, Title) {
+				await addRecords({
+					class_id: this.items.class_id,
+					type: 1,
+					user_id: getApp().globalData.user_id
+				})
 				uni.navigateTo({
-					url:"/pages/index/video?title="+Title + "&url="+URL
-          //视频播放，对应的跳转
+					url: "/pages/index/video?title=" + Title + "&url=" + URL
+					//视频播放，对应的跳转
 				})
 			},
-            getChapter() {
-                listChapter(this.query).then(res => {
-                    this.organizeChapters(res.rows);
-                }).catch(error => {
-                    console.log(error)
-                })
-            },
-            collectCourse() {
-                uni.showToast({
-                    title: '收藏成功',
-                    icon: 'success',
-                    duration: 2000
-                });
-            },
-            playVideo(video) {
-                // console.log('播放视频：', video);
-            }
-        }
-    };
+			getChapter() {
+				listChapter(this.query).then(res => {
+					this.organizeChapters(res.rows);
+				}).catch(error => {
+					console.log(error)
+				})
+			},
+			
+			// 设置收藏
+			async collectCourse() {
+				await addRecords({
+					class_id: this.items.class_id,
+					type: 2,
+					user_id: getApp().globalData.user_id
+				})
+				uni.showToast({
+					title: '收藏成功',
+					icon: 'success',
+					duration: 2000
+				});
+			}
+		}
+	};
 </script>
 
 <style lang="scss">
@@ -173,11 +188,13 @@
 		background-color: #f0f0f0;
 		/* 灰色背景 */
 	}
-	.img1{
-		width:600rpx;
+
+	.img1 {
+		width: 600rpx;
 		height: 400rpx;
-		
+
 	}
+
 	.container {
 		display: flex;
 		flex-direction: column;
@@ -291,7 +308,8 @@
 
 	.bottom-bar {
 		position: fixed;
-		bottom: 0px; /* 距离底部20px */
+		bottom: 0px;
+		/* 距离底部20px */
 		left: 0;
 		width: 100%;
 		display: flex;
