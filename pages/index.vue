@@ -14,8 +14,6 @@
 		
 		<index_card :scrollItems="scrollItems" showTag="免费课程" isSearchResultsVisible2="true" class="scroll"></index_card>
 											   
-		<index_card :scrollItems="scrollItems" showTag="头条精选"  isSearchResultsVisible2="true" class="scroll"></index_card>
-
 	</view>
 </template>
 
