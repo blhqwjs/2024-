@@ -34,6 +34,7 @@
 					</view>
 				</view>
 			</view>
+			<view class="blank"></view>
 		</view>
 		<view class="bottom-bar">
 			<view class="bottom-item" @click="collectCourse">收藏</view>
@@ -259,6 +260,10 @@
 		flex-direction: column;
 		gap: 10px;
 		/* 每个视频分类之间的间隔 */
+	}
+	
+	.blank{
+		height: 70rpx;
 	}
 
 	.video-category {
