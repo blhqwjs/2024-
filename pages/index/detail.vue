@@ -53,6 +53,7 @@
             this.query.class_id = this.items.class_id;
             this.getChapter();
         },
+      //props接收从首页传递的数据。
         props: {
             item: {
                 default: [],
@@ -106,19 +107,26 @@
                 let firstindex = 0;
                 let secendindex = 0;
                 this.characterList = [];
-
+                //以下是数据展示类型的转换，需要转换为上文的video类型，
                 chapters.forEach(chapter => {
                     if (chapter.father_chapter_id === null) {
+                      //如果父节点，即father_chapter_id为空，意味着其为课程下的大章节，即title
                         this.characterList.push({
+                          //按照属性，为其添加数据
                             id: chapter.chapter_id,
                             title: chapter.name,
                             videos: [],
                         });
-                        firstindex++;
+                        firstindex++; //这个实际没啥用了，就是统计有多少个
                     } else {
                         let parentIndex = this.characterList.findIndex(item => item.id === chapter.father_chapter_id);
+                        //当章节的id与father_chapter_id一致，则说明产生分级关系，产生为子章节
+                        //Array.prototype.findIndex 方法：查找数组中符合条件的元素的索引。
+                        // 如果找到了符合条件的元素，则返回该元素在数组中的索引。如果没有找到符合条件的元素，则返回 -1
+                        // 实际底层代码就是一个“--i”，到节点终点，仍然找不到，再次"--i"返回-1
                         if (parentIndex !== -1) {
                             this.characterList[parentIndex].videos.push({
+                              //找到了就按index索引，放进去数据。
                                 id: chapter.chapter_id,
                                 title: chapter.name,
                                 duration: '(' + chapter.duration + '分钟)',
@@ -133,6 +141,7 @@
 			goToMv(URL,Title){
 				uni.navigateTo({
 					url:"/pages/index/video?title="+Title + "&url="+URL
+          //视频播放，对应的跳转
 				})
 			},
             getChapter() {

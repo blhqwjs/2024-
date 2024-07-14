@@ -24,7 +24,7 @@
           :class="[swiperIndex !== index ? 'tn-swiper__item__image--scale' : '']"
           :style="{
             borderRadius: `${radius}rpx`,
-            transform: effect3d && swiperIndex !== index ? 'scaleY(0.9)' : 'scaleY(1)',
+            transform: effect3d && swiperIndex !== index ? 'scaleY(0.9)' : 'scaleY(1)', 
             margin: effect3d && swiperIndex !== index ? '0 20rpx' : 0
           }"
           @click="click(index)"
