@@ -41,7 +41,8 @@
 			<view class="separator"></view>
 			<view class="bottom-item">分享</view>
 			<view class="separator"></view>
-			<view class="bottom-item large" @click="goToMv(characterList[0].videos[0].url,characterList[0].videos[0].title)">立即学习</view>
+			<view class="bottom-item large"
+				@click="goToMv(characterList[0].videos[0].url,characterList[0].videos[0].title)">立即学习</view>
 		</view>
 	</view>
 </template>
@@ -164,7 +165,7 @@
 					console.log(error)
 				})
 			},
-			
+
 			// 设置收藏
 			async collectCourse() {
 				await addRecords({
@@ -261,8 +262,8 @@
 		gap: 10px;
 		/* 每个视频分类之间的间隔 */
 	}
-	
-	.blank{
+
+	.blank {
 		height: 70rpx;
 	}
 
@@ -312,16 +313,16 @@
 	}
 
 	.bottom-bar {
+		padding-bottom: env(safe-area-inset-bottom);
 		position: fixed;
 		bottom: 0px;
-		/* 距离底部20px */
 		left: 0;
 		width: 100%;
 		display: flex;
 		background-color: white;
 		box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
 		border-top: 1px solid #ddd;
-		height: 90rpx;
+		height: calc(90rpx + env(safe-area-inset-bottom));
 	}
 
 	.bottom-item {
@@ -331,6 +332,7 @@
 		align-items: center;
 		font-size: 18px;
 		cursor: pointer;
+		border-bottom: #ddd solid 1px;
 	}
 
 	.bottom-item.large {
