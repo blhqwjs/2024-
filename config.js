@@ -1,7 +1,8 @@
 // 应用全局配置
 module.exports = {
-  // baseUrl: 'http://47.99.113.216:20247',
-  baseUrl: 'http://47.99.113.216:24708/prod-api',
+  baseUrl: 'http://47.99.113.216:20247',
+  // baseUrl: 'http://47.99.113.216:24708/prod-api',
+  
   // 应用信息
   appInfo: {
     // 应用名称

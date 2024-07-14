@@ -275,14 +275,14 @@
 
 	.bottom-bar {
 		position: fixed;
-		bottom: 0;
+		bottom: 10px; /* 距离底部20px */
 		left: 0;
 		width: 100%;
 		display: flex;
 		background-color: white;
 		box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
 		border-top: 1px solid #ddd;
-		height: 60px;
+		height: 70px;
 	}
 
 	.bottom-item {
